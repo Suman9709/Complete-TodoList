@@ -6,6 +6,7 @@ width: 40vw;
 margin-top: 20px;
 padding: 0;
 gap: 5px;
+
 }
 
 .list ul li{
@@ -20,12 +21,25 @@ gap: 5px;
     padding: 5px;
     border: 1px solid black;
     border-radius: 5px;
+    flex-wrap: wrap; 
+    min-width: 250px;  
+    overflow: hidden;
 }
 
 .left-section {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+span{
+    display: flex;
+    /* float: left; */
+    width: 450px;
+    /* cursor: pointer; */
+    scrollbar-width: none;
+    flex-wrap: wrap;
+    overflow: auto;
 }
 
 .right-section {
@@ -41,6 +55,7 @@ gap: 5px;
     width: 20px; 
     height: 20px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .checkicon {
@@ -48,8 +63,46 @@ gap: 5px;
 }
 
 
-@media screen and (max-width:500px) {
-    .list ul li{
+@media screen and (max-width: 768px) {
+    .list ul li {
+        font-size: 1rem;
+        width: 90%;
+
+    }
+    span{
+        display: flex;
+        float: left;
+        scrollbar-width: none;
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .list ul li {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+    span{
+        display: flex;
+        float: left;
+        scrollbar-width: none;
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .list ul li {
         font-size: 0.8rem;
-    }    
+        padding: 5px;
+        
+    }
+    span{
+        display: flex;
+        float: left;
+        flex-wrap: wrap;
+        overflow: auto;
+        scrollbar-width: none;
+    }
 }

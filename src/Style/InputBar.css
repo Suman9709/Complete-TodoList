@@ -72,3 +72,9 @@ ul li {
     border-radius: 5px;
     margin-top: 5px;
 }
+
+@media screen and (max-width:350px) {
+    input ::placeholder{
+        font-size: 12rem;
+    }
+}
