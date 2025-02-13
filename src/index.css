@@ -1,0 +1,21 @@
+body {
+  background-color: black;
+  margin: 0; 
+  padding: 0;
+  overflow-x: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative;  */
+  z-index: 100; 
+  color: white; 
+}
+

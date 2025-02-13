@@ -1,0 +1,55 @@
+.list ul{
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 40vw;
+margin-top: 20px;
+padding: 0;
+gap: 5px;
+}
+
+.list ul li{
+    background-color: #fff;
+    width: 40vw;
+    font-size: 2rem;
+    color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.checkicon,
+.editicon,
+.deleteicon {
+    width: 20px; 
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkicon {
+    order: -1; 
+}
+
+
+@media screen and (max-width:500px) {
+    .list ul li{
+        font-size: 0.8rem;
+    }    
+}
