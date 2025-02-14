@@ -19,6 +19,7 @@ const InputBar = () => {
 
         if (todos.find(item => item.text.toLowerCase() === todo.toLowerCase())) {
             alert("Item already exists in the list!");
+            setTodo("")
             return;
         }
 

@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 768px) {
     .btn {
-        width: 20vw;
+        width: 15vw;
         font-size: 1.2rem;
     }
 }
@@ -28,6 +28,6 @@
 @media screen and (max-width: 300px) {
     .btn {
         font-size: 0.9rem;
-        width: 40vw;
+        width: 10vw;
     }
 }

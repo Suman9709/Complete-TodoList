@@ -1,28 +1,27 @@
-.list ul{
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 40vw;
-margin-top: 20px;
-padding: 0;
-gap: 5px;
-
+.list ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+    gap: 5px;
 }
 
-.list ul li{
+.list ul li {
     background-color: #fff;
-    width: 40vw;
-    font-size: 2rem;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1.5rem;
     color: red;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    padding: 5px;
     border: 1px solid black;
     border-radius: 5px;
-    flex-wrap: wrap; 
-    min-width: 250px;  
+    flex-wrap: wrap;
+    min-width: 250px;
     overflow: hidden;
 }
 
@@ -30,16 +29,17 @@ gap: 5px;
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap; /* Allow text to wrap */
+    max-width: 75%;
 }
 
-span{
+span {
     display: flex;
-    /* float: left; */
-    width: 450px;
-    /* cursor: pointer; */
-    scrollbar-width: none;
     flex-wrap: wrap;
     overflow: auto;
+    scrollbar-width: none;
+    max-width: 100%;
+    word-break: break-word;
 }
 
 .right-section {
@@ -48,61 +48,66 @@ span{
     gap: 10px;
 }
 
-
+/* Icon Styling */
 .checkicon,
 .editicon,
 .deleteicon {
-    width: 20px; 
+    width: 20px;
     height: 20px;
     cursor: pointer;
     flex-shrink: 0;
 }
 
-.checkicon {
-    order: -1; 
-}
-
-
+/* Responsive Styles */
 @media screen and (max-width: 768px) {
     .list ul li {
-        font-size: 1rem;
+        font-size: 1.2rem;
         width: 90%;
-
     }
-    span{
-        display: flex;
-        float: left;
-        scrollbar-width: none;
-        flex-wrap: wrap;
-        overflow: auto;
+    .checkicon{
+        order: -1;
     }
 }
 
 @media screen and (max-width: 500px) {
     .list ul li {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 8px;
     }
-    span{
-        display: flex;
-        float: left;
-        scrollbar-width: none;
-        flex-wrap: wrap;
-        overflow: auto;
+
+    span {
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+
+    .right-section {
+        gap: 5px;
+    }
+
+    .checkicon,
+    .editicon,
+    .deleteicon {
+        width: 18px;
+        height: 18px;
+    }
+    .checkicon{
+        order: -1;
     }
 }
 
 @media screen and (max-width: 350px) {
     .list ul li {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         padding: 5px;
-        
     }
-    span{
-        display: flex;
-        float: left;
-        flex-wrap: wrap;
-        overflow: auto;
-        scrollbar-width: none;
+
+    .checkicon,
+    .editicon,
+    .deleteicon {
+        width: 16px;
+        height: 16px;
+    }
+    .checkicon{
+        order: -1;
     }
 }
