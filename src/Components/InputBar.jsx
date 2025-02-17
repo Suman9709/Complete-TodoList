@@ -2,11 +2,25 @@ import React, { useState } from 'react'
 import Button from './Button';
 import TodoList from './TodoList';
 import '../Style/InputBar.css'
+import { useEffect } from 'react';
 
 const InputBar = () => {
     const [todo, setTodo] = useState("");
     const [todos, setTodos] = useState([]);
     // const [editText, setEditText] = useState("")
+
+useEffect(()=>{
+const saveTodos = JSON.parse(localStorage.getItem('todos'))
+if(saveTodos){
+    setTodos(saveTodos);
+}
+},[])
+
+useEffect(()=>{
+if(todos.length > 0){
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+},[todos])
 
 
     const handleSubmit = (e) => {
@@ -65,7 +79,7 @@ const InputBar = () => {
                     className='todo'
                     onChange={(e) => setTodo(e.target.value)} />
 
-                <Button value="Add" noClick={handleSubmit} />
+                <Button value="Add" onClick={handleSubmit} />
 
                </div>
             </form>

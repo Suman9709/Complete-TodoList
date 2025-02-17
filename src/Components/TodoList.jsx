@@ -52,6 +52,7 @@ const TodoList = ({ todos, handleEdit, handleDelete, handleCheck }) => {
                                         onChange={(e) => setEditValue(e.target.value)}
                                         className="edit-input"
                                         autoFocus
+                                        
                                     />
                                 ) : (
                                     <span
