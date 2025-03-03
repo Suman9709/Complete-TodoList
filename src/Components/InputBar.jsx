@@ -9,18 +9,18 @@ const InputBar = () => {
     const [todos, setTodos] = useState([]);
     // const [editText, setEditText] = useState("")
 
-useEffect(()=>{
-const saveTodos = JSON.parse(localStorage.getItem('todos'))
-if(saveTodos){
-    setTodos(saveTodos);
-}
-},[])
+    useEffect(() => {
+        const saveTodos = JSON.parse(localStorage.getItem('todos'))
+        if (saveTodos) {
+            setTodos(saveTodos);
+        }
+    }, [])
 
-useEffect(()=>{
-if(todos.length > 0){
-    localStorage.setItem('todos', JSON.stringify(todos));
-}
-},[todos])
+    useEffect(() => {
+        if (todos.length > 0) {
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+    }, [todos])
 
 
     const handleSubmit = (e) => {
@@ -56,9 +56,9 @@ if(todos.length > 0){
     }
 
     const handleEdit = (index, newText) => {
-      setTodos(todos.map((todo, i)=>
-    i=== index ? {...todo, text:newText}:todo
-    ))
+        setTodos(todos.map((todo, i) =>
+            i === index ? { ...todo, text: newText } : todo
+        ))
     }
 
 
@@ -67,21 +67,21 @@ if(todos.length > 0){
     }
     return (
         <div className='formData'>
-            
+
             <form onSubmit={handleSubmit}>
-            <h3 className='todo-heading'>Enter you Todo</h3>
-               <div className='input-container'>
-               <input
-                    type="text"
-                    placeholder='Type your Todo...'
-                    value={todo}
-                    id='todo'
-                    className='todo'
-                    onChange={(e) => setTodo(e.target.value)} />
+                <h3 className='todo-heading'>Enter you Todo</h3>
+                <div className='input-container'>
+                    <input
+                        type="text"
+                        placeholder='Type your Todo...'
+                        value={todo}
+                        id='todo'
+                        className='todo'
+                        onChange={(e) => setTodo(e.target.value)} />
 
-                <Button value="Add" onClick={handleSubmit} />
+                    <Button value="Add" onClick={handleSubmit} />
 
-               </div>
+                </div>
             </form>
             <div className='todo-list'>
                 <TodoList todos={todos} handleEdit={handleEdit} handleDelete={handleDelete} handleCheck={handleCheck} />

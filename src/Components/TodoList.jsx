@@ -4,9 +4,10 @@ import "../Style/TodoList.css";
 import checkIcon from "../../public/Image/check.png";
 import deleteIcon from "../../public/Image/deleteIcon1.png";
 import editIcon from "../../public/Image/editIcon.png";
+import cancelIcon from "../../public/Image/cancel.png"; // Added cancel icon
 
 const TodoList = ({ todos, handleEdit, handleDelete, handleCheck }) => {
-    const [editIndex, setEditIndex] = useState("");
+    const [editIndex, setEditIndex] = useState(null);
     const [editValue, setEditValue] = useState("");
 
     const handleEditClick = (index, text) => {
@@ -15,20 +16,24 @@ const TodoList = ({ todos, handleEdit, handleDelete, handleCheck }) => {
     };
 
     const handleSaveEdit = (index) => {
-        if (editValue.trim() === ""){
-            alert("Add some text")
-             return;
+        if (editValue.trim() === "") {
+            alert("Add some text");
+            return;
         }
 
         if (todos.find((item, i) => i !== index && item.text.toLowerCase() === editValue.toLowerCase())) {
             alert("Item already exists in the list!");
-            setEditIndex("");
-
+            setEditIndex(null);
             return;
         }
 
         handleEdit(index, editValue);
-        setEditIndex("");
+        setEditIndex(null);
+    };
+
+    const handleCancelEdit = () => {
+        setEditIndex(null);
+        setEditValue("");
     };
 
     return (
@@ -38,12 +43,14 @@ const TodoList = ({ todos, handleEdit, handleDelete, handleCheck }) => {
                     todos.map((todo, index) => (
                         <li key={index}>
                             <div className="left-section">
-                                <img
-                                    src={checkIcon}
-                                    alt="checkIcon"
-                                    onClick={() => handleCheck(index)}
-                                    className="checkicon"
-                                />
+                                {editIndex !== index && (
+                                    <img
+                                        src={checkIcon}
+                                        alt="checkIcon"
+                                        onClick={() => handleCheck(index)}
+                                        className="checkicon"
+                                    />
+                                )}
 
                                 {editIndex === index ? (
                                     <input
@@ -52,7 +59,6 @@ const TodoList = ({ todos, handleEdit, handleDelete, handleCheck }) => {
                                         onChange={(e) => setEditValue(e.target.value)}
                                         className="edit-input"
                                         autoFocus
-                                        
                                     />
                                 ) : (
                                     <span
@@ -63,33 +69,39 @@ const TodoList = ({ todos, handleEdit, handleDelete, handleCheck }) => {
                                         {todo.text}
                                     </span>
                                 )}
-                            </div>
-
-                        
+                            </div>                        
                             <div className="right-section">
-                                {editIndex === index  ? (
-                                 
-                                    <img
-                                        src={checkIcon}
-                                        alt="checkIcon"
-                                        onClick={() => handleSaveEdit(index)}
-                                        className="checkicon"
-                                    />
+                                {editIndex === index ? (
+                                    <>
+                                        <img
+                                            src={checkIcon}
+                                            alt="checkIcon"
+                                            onClick={() => handleSaveEdit(index)}
+                                            className="checkicon"
+                                        />
+                                        <img 
+                                            src={cancelIcon}  
+                                            alt="cancelIcon"
+                                            onClick={handleCancelEdit}
+                                            className="cancelicon "
+                                        />
+                                    </>
                                 ) : (
-                                    <img
-                                        src={editIcon}
-                                        alt="editIcon"
-                                        onClick={() => handleEditClick(index, todo.text)}
-                                        className="editicon"
-                                    />
+                                    <>
+                                        <img
+                                            src={editIcon}
+                                            alt="editIcon"
+                                            onClick={() => handleEditClick(index, todo.text)}
+                                            className="editicon"
+                                        />
+                                        <img
+                                            src={deleteIcon}
+                                            alt="deleteIcon"
+                                            onClick={() => handleDelete(index)}
+                                            className="deleteicon"
+                                        />
+                                    </>
                                 )}
-
-                                <img
-                                    src={deleteIcon}
-                                    alt="deleteIcon"
-                                    onClick={() => handleDelete(index)}
-                                    className="deleteicon"
-                                />
                             </div>
                         </li>
                     ))

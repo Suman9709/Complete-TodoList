@@ -47,11 +47,20 @@ span {
     align-items: center;
     gap: 10px;
 }
-
+.edit-input {
+    width: 175px;
+    outline: none;
+    border: none; 
+    border-radius: 4px; 
+    padding: 5px;
+    font-size: 16px;
+    position: relative;
+}
 /* Icon Styling */
 .checkicon,
 .editicon,
-.deleteicon {
+.deleteicon,
+.cancelicon {
     width: 20px;
     height: 20px;
     cursor: pointer;
